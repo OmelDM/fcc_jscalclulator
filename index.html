@@ -11,46 +11,44 @@
   <div class="wrapper">
     <div class="calculator">
       <div class="display">
-        <div class="previous">
-          30+6
-        </div>
-        <div class="current">
-          222
-        </div>
+        <div class="previous js_previous"></div>
+        <div class="current js_current"></div>
       </div>
       <div class="keyboard">
         <div class="row">
-          <div class="item">C</div>
-          <div class="item">&leftarrow;</div>
+          <div class="item js_clear">C</div>
+          <div class="item js_backspace">&leftarrow;</div>
           <div class="item">&percnt;</div>
-          <div class="item">&divide;</div>
+          <div class="item js_operation_sign">&divide;</div>
         </div>
         <div class="row">
-          <div class="item">7</div>
-          <div class="item">8</div>
-          <div class="item">9</div>
-          <div class="item">&times;</div>
+          <div class="item js_numerical">7</div>
+          <div class="item js_numerical">8</div>
+          <div class="item js_numerical">9</div>
+          <div class="item js_operation_sign">&times;</div>
         </div>
         <div class="row">
-          <div class="item">4</div>
-          <div class="item">5</div>
-          <div class="item">6</div>
-          <div class="item">&minus;</div>
+          <div class="item js_numerical">4</div>
+          <div class="item js_numerical">5</div>
+          <div class="item js_numerical">6</div>
+          <div class="item js_operation_sign">&minus;</div>
         </div>
         <div class="row">
-          <div class="item">1</div>
-          <div class="item">2</div>
-          <div class="item">3</div>
-          <div class="item">&plus;</div>
+          <div class="item js_numerical">1</div>
+          <div class="item js_numerical">2</div>
+          <div class="item js_numerical">3</div>
+          <div class="item js_operation_sign">&plus;</div>
         </div>
         <div class="row">
-          <div class="item">0</div>
-          <div class="item">&period;</div>
+          <div class="item js_numerical">0</div>
+          <div class="item js_numerical">&period;</div>
           <div class="item item__double gradiented">&equals;</div>
         </div>
       </div>
   </div>
   </div>
-  <script src="main.js" charset="utf-8"></script>
+  <script src="view.js"></script>
+  <script src="controller.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
