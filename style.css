@@ -34,28 +34,30 @@ div {
   color: #fff;
   font-family: 'Helvetica', sans-serif;
   font-weight: 100;
-  font-size: 26px;
+  font-size: 36px;
   min-width: 320px;
   max-width: 1024px;
   width: 100vw;
   min-height: 320px;
   max-height: 960px;
   height: 100vh;
+  overflow: hidden;
   display: flex;
   flex-wrap: wrap;
 }
 @media (min-width: 640px) {
   .calculator {
-    font-size: 32px;
+    font-size: 46px;
   }
 }
 @media (min-width: 960px) {
   .calculator {
-    font-size: 38px;
+    font-size: 54px;
   }
 }
 @media (min-width: 1025px) {
   .calculator {
+    font-size: 36px;
     max-width: 400px;
     max-height: 500px;
   }
@@ -71,13 +73,19 @@ div {
   padding: 0 30px;
 }
 .previous {
-  font-size: 0.9em;
-  min-height: 0.9em;
+  font-size: 1.6em;
+  height: 1.6em;
   color: #9d9ea2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 .current {
-  font-size: 1.2em;
-  min-height: 1.2em;
+  font-size: 2em;
+  min-height: 2em;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 .keyboard {
   flex-shrink: 0;
