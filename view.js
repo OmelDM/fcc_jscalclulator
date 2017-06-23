@@ -24,19 +24,19 @@
         });
         break;
 
-        case 'operationEntered':
-          self.signButtons.forEach(function(button) {
-            button.addEventListener('click', function (event) {
-              handler(event.target.innerHTML);
-            });
+      case 'operationEntered':
+        self.signButtons.forEach(function(button) {
+          button.addEventListener('click', function (event) {
+            handler(event.target.innerHTML);
           });
-          break;
+        });
+        break;
 
-          case 'equalsEntered':
-            self.equalsButton.addEventListener('click', function () {
-              handler();
-            });
-            break;
+      case 'equalsEntered':
+        self.equalsButton.addEventListener('click', function () {
+          handler();
+        });
+        break;
       default:
 
     }
