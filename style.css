@@ -21,7 +21,7 @@ div {
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: cover;
-    background-color: #e76848;
+    background-color: #67BCDB;
   }
 }
 @media (min-height: 700px) {
@@ -72,10 +72,12 @@ div {
 }
 .previous {
   font-size: 0.9em;
+  line-height: 0.9em;
   color: #9d9ea2;
 }
 .current {
   font-size: 1.2em;
+  min-height: 1.2em;
 }
 .keyboard {
   flex-shrink: 0;
