@@ -8,42 +8,40 @@
     this.backspaceButton = document.querySelector('.js_backspace');
     this.currentDisplay = document.querySelector('.js_current');
     this.prevDisplay = document.querySelector('.js_previous');
-    this.isWaitingForOperation = true;
   }
 
-  View.prototype.init = function () {
+  View.prototype.bind = function (eventName, handler) {
     var self = this;
 
-    self.numericalButtons.forEach(function(button) {
-      button.addEventListener('click', function () {
-        self.currentDisplay.innerHTML += this.innerHTML;
-      });
-    });
+    switch (eventName) {
 
-    self.signButtons.forEach(function(button) {
-      button.addEventListener('click', function () {
-        if (self.isWaitingForOperation) {
-          self.currentDisplay.innerHTML += this.innerHTML;
-          self.isWaitingForOperation = false;
-        }
-      });
-    });
+      case 'numberEntered':
+        self.numericalButtons.forEach(function(button) {
+          button.addEventListener('click', function (event) {
+            handler(event.target.innerHTML);
+          });
+        });
+        break;
 
-    self.clearButton.addEventListener('click', function() {
-      self.currentDisplay.innerHTML = '';
-      self.prevDisplay.innerHTML = '';
-      self.isWaitingForOperation = true;
-    });
+        case 'operationEntered':
+          self.signButtons.forEach(function(button) {
+            button.addEventListener('click', function (event) {
+              handler(event.target.innerHTML);
+            });
+          });
+          break;
+      default:
 
-    self.backspaceButton.addEventListener('click', function() {
-      var lastCharacter = self.currentDisplay.innerHTML.substr(-1);
-      if (lastCharacter === '÷' || lastCharacter === '×' || lastCharacter === '−'
-        || lastCharacter === '+') {
-        self.isWaitingForOperation = true;
-      }
-      self.currentDisplay.innerHTML = self.currentDisplay.innerHTML.slice(0, -1);
-    });
+    }
 
+  };
+
+  View.prototype.updateMainDisplay = function (newValue) {
+    this.currentDisplay.innerHTML = newValue;
+  };
+
+  View.prototype.updateSecondDisplay = function (newValue) {
+    this.prevDisplay.innerHTML = newValue;
   };
 
   window.app = window.app || {};
