@@ -20,8 +20,13 @@ div {
     background-image: url(bg.png);
     background-repeat: no-repeat;
     background-position: bottom;
-    background-size: contain;
+    background-size: cover;
     background-color: #e76848;
+  }
+}
+@media (min-height: 700px) {
+  .wrapper {
+    background-size: contain;
   }
 }
 .calculator {
@@ -31,7 +36,7 @@ div {
   font-weight: 100;
   font-size: 26px;
   min-width: 320px;
-  max-width: 960px;
+  max-width: 1024px;
   width: 100vw;
   min-height: 320px;
   max-height: 960px;
@@ -47,6 +52,12 @@ div {
 @media (min-width: 960px) {
   .calculator {
     font-size: 38px;
+  }
+}
+@media (min-width: 1025px) {
+  .calculator {
+    max-width: 400px;
+    max-height: 500px;
   }
 }
 .display {
