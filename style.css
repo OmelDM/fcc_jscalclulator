@@ -72,7 +72,7 @@ div {
 }
 .previous {
   font-size: 0.9em;
-  line-height: 0.9em;
+  min-height: 0.9em;
   color: #9d9ea2;
 }
 .current {
