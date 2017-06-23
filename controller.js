@@ -14,6 +14,9 @@
     this.view.bind('operationEntered', function(operation) {
       self.enterOperation(operation);
     });
+    this.view.bind('equalsEntered', function() {
+      self.calculateResult();
+    });
   }
 
   Controller.prototype.enterNumber = function(number) {
@@ -38,6 +41,36 @@
       this.isWaitingForOperation = false;
       this.view.updateMainDisplay(this.secondOperand);
       this.view.updateSecondDisplay(this.firstOperand + ' ' + this.operation);
+    }
+  };
+
+  Controller.prototype.calculateResult = function() {
+    if ('' !== this.firstOperand && '' !== this.operation &&
+          '' !== this.secondOperand) {
+      var result = 0;
+      var a = parseInt(this.firstOperand);
+      var b = parseInt(this.secondOperand);
+      switch (this.operation) {
+        case '÷':
+          result = a / b;
+          break;
+        case '×':
+          result = a * b;
+          break;
+        case '−':
+          result = a - b;
+          break;
+        case '+':
+          result = a + b;
+          break;
+        default:
+
+      }
+
+      this.view.updateMainDisplay(result);
+      this.view.updateSecondDisplay(this.firstOperand + ' ' + this.operation
+            + ' ' + this.secondOperand);
+      this.isWaitingForOperation = false;
     }
   };
 

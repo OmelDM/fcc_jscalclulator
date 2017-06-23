@@ -8,6 +8,7 @@
     this.backspaceButton = document.querySelector('.js_backspace');
     this.currentDisplay = document.querySelector('.js_current');
     this.prevDisplay = document.querySelector('.js_previous');
+    this.equalsButton = document.querySelector('.js_equals');
   }
 
   View.prototype.bind = function (eventName, handler) {
@@ -30,6 +31,12 @@
             });
           });
           break;
+
+          case 'equalsEntered':
+            self.equalsButton.addEventListener('click', function () {
+              handler();
+            });
+            break;
       default:
 
     }
