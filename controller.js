@@ -17,6 +17,12 @@
     this.view.bind('equalsEntered', function() {
       self.calculateResult();
     });
+    this.view.bind('clear', function() {
+      self.clear();
+    });
+    this.view.bind('deleteLastNumber', function() {
+      self.deleteLastNumber();
+    });
   }
 
   Controller.prototype.enterNumber = function(number) {
@@ -72,6 +78,14 @@
             + ' ' + this.secondOperand);
       this.isWaitingForOperation = false;
     }
+  };
+
+  Controller.prototype.clear = function() {
+    alert('clear');
+  };
+
+  Controller.prototype.deleteLastNumber = function () {
+    alert('deleteLastNumber');
   };
 
   window.app = window.app || {};

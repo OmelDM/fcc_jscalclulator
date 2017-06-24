@@ -37,6 +37,18 @@
           handler();
         });
         break;
+
+      case 'clear':
+        self.clearButton.addEventListener('click', function () {
+          handler();
+        });
+        break;
+
+      case 'deleteLastNumber':
+        self.backspaceButton.addEventListener('click', function () {
+          handler();
+        });
+        break;
       default:
 
     }
