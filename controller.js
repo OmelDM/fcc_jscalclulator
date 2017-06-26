@@ -24,6 +24,9 @@
     this.view.bind('deleteLastNumber', function() {
       self.deleteLastNumber();
     });
+    this.view.bind('percentage', function () {
+      self.findPercentage();
+    });
   }
 
   Controller.prototype.enterNumber = function(newNumber) {
@@ -65,6 +68,11 @@
       newNumber = newNumber.toPrecision(MAX_LENGTH/3);
     }
     this.view.updateDisplay(newNumber);
+  };
+
+  Controller.prototype.findPercentage = function () {
+    this.calculator.setOperation('%');
+    this.updateDisplay(this.calculator.getResults());
   };
 
   function parseNumber(number) {

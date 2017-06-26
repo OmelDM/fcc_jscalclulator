@@ -53,6 +53,9 @@
       case '+':
         result = a + b;
         break;
+      case '%':
+        result = a / 100;
+        break;
       default:
     }
 

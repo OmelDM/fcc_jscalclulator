@@ -8,6 +8,7 @@
     this.backspaceButton = document.querySelector('.js_backspace');
     this.display = document.querySelector('.js_display');
     this.equalsButton = document.querySelector('.js_equals');
+    this.percentageButton = document.querySelector('.js_percentage');
   }
 
   View.prototype.bind = function (eventName, handler) {
@@ -48,6 +49,10 @@
           handler();
         });
         break;
+      case 'percentage':
+      self.percentageButton.addEventListener('click', function () {
+        handler();
+      })
       default:
 
     }
