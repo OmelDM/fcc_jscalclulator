@@ -71,21 +71,8 @@ div {
   justify-content: space-around;
   text-align: right;
   padding: 0 30px;
-}
-.previous {
-  font-size: 1.6em;
-  height: 1.6em;
-  color: #9d9ea2;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-.current {
   font-size: 2em;
   min-height: 2em;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
 }
 .keyboard {
   flex-shrink: 0;

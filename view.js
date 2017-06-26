@@ -6,8 +6,7 @@
     this.signButtons = document.querySelectorAll('.js_operation_sign');
     this.clearButton = document.querySelector('.js_clear');
     this.backspaceButton = document.querySelector('.js_backspace');
-    this.currentDisplay = document.querySelector('.js_current');
-    this.prevDisplay = document.querySelector('.js_previous');
+    this.display = document.querySelector('.js_display');
     this.equalsButton = document.querySelector('.js_equals');
   }
 
@@ -55,12 +54,8 @@
 
   };
 
-  View.prototype.updateMainDisplay = function (newValue) {
-    this.currentDisplay.innerHTML = newValue;
-  };
-
-  View.prototype.updateSecondDisplay = function (newValue) {
-    this.prevDisplay.innerHTML = newValue;
+  View.prototype.updateDisplay = function (newValue) {
+    this.display.innerHTML = newValue;
   };
 
   window.app = window.app || {};

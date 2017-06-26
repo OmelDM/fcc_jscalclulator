@@ -64,7 +64,7 @@
     if (MAX_LENGTH < String(newNumber).length) {
       newNumber = newNumber.toPrecision(MAX_LENGTH/3);
     }
-    this.view.updateMainDisplay(newNumber);
+    this.view.updateDisplay(newNumber);
   };
 
   function parseNumber(number) {
