@@ -60,6 +60,12 @@
     return result;
   };
 
+  Calculator.prototype.reset = function () {
+    this.operandA = null;
+    this.operandB = null;
+    this.operation = null;
+  };
+
   window.app = window.app || {};
   window.app.Calculator = Calculator;
 })(window);

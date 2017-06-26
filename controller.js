@@ -49,7 +49,10 @@
   };
 
   Controller.prototype.clear = function() {
-    alert('clear');
+    this.operation = '';
+    this.isNewOperandRequired = true;
+    this.calculator.reset();
+    this.updateDisplay('');
   };
 
   Controller.prototype.deleteLastNumber = function () {
