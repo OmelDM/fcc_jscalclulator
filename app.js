@@ -2,6 +2,7 @@
   'use strict';
 
   var view = new app.View();
-  var controller = new app.Controller(view);
+  var calculator = new app.Calculator();
+  var controller = new app.Controller(view, calculator);
 
 })();

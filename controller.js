@@ -1,12 +1,13 @@
 (function (window) {
   'use strict';
+  var MAX_LENGTH = 9;
 
-  function Controller(aView) {
+  function Controller(aView, aCalculator) {
     this.view = aView;
-    this.firstOperand = '';
-    this.secondOperand = '';
+    this.calculator = aCalculator;
+    this.operand = '';
     this.operation = '';
-    this.isWaitingForOperation = true;
+    this.isNewOperandRequired = true;
     var self = this;
     this.view.bind('numberEntered', function(number) {
       self.enterNumber(number);
@@ -25,59 +26,26 @@
     });
   }
 
-  Controller.prototype.enterNumber = function(number) {
-    if (this.isValidEnteredNumber(number)) {
-      if (this.isWaitingForOperation) {
-        this.firstOperand += number;
-        this.view.updateMainDisplay(this.firstOperand);
-      } else {
-        this.secondOperand += number;
-        this.view.updateMainDisplay(this.secondOperand);
-      }
+  Controller.prototype.enterNumber = function(newNumber) {
+    if (this.isNewOperandRequired) {
+      this.operand = '';
+      this.isNewOperandRequired = false;
     }
-  };
-
-  Controller.prototype.isValidEnteredNumber = function(number) {
-    return true;
+    this.operand = _validated(this.operand, newNumber);
+    this.calculator.setOperand(parseNumber(this.operand));
+    this.updateDisplay(this.operand);
   };
 
   Controller.prototype.enterOperation = function(operation) {
-    if (this.isWaitingForOperation) {
-      this.operation = operation;
-      this.isWaitingForOperation = false;
-      this.view.updateMainDisplay(this.secondOperand);
-      this.view.updateSecondDisplay(this.firstOperand + ' ' + this.operation);
-    }
+    this.calculator.setOperation(operation);
+    this.calculator.setOperand(parseNumber(this.operand));
+    this.isNewOperandRequired = true;
   };
 
   Controller.prototype.calculateResult = function() {
-    if ('' !== this.firstOperand && '' !== this.operation &&
-          '' !== this.secondOperand) {
-      var result = 0;
-      var a = parseInt(this.firstOperand);
-      var b = parseInt(this.secondOperand);
-      switch (this.operation) {
-        case '÷':
-          result = a / b;
-          break;
-        case '×':
-          result = a * b;
-          break;
-        case '−':
-          result = a - b;
-          break;
-        case '+':
-          result = a + b;
-          break;
-        default:
-
-      }
-
-      this.view.updateMainDisplay(result);
-      this.view.updateSecondDisplay(this.firstOperand + ' ' + this.operation
-            + ' ' + this.secondOperand);
-      this.isWaitingForOperation = false;
-    }
+    this.calculator.setOperand(parseNumber(this.operand));
+    this.isNewOperandRequired = true;
+    this.updateDisplay(this.calculator.getResults());
   };
 
   Controller.prototype.clear = function() {
@@ -86,6 +54,40 @@
 
   Controller.prototype.deleteLastNumber = function () {
     alert('deleteLastNumber');
+  };
+
+  Controller.prototype.updateDisplay = function(newNumber) {
+    if (MAX_LENGTH < String(newNumber).length) {
+      newNumber = newNumber.toPrecision(MAX_LENGTH/3);
+    }
+    this.view.updateMainDisplay(newNumber);
+  };
+
+  function parseNumber(number) {
+    return number.includes('.') ? parseFloat(number) : parseInt(number);
+  }
+  function _validated(prevOperand, newNumber) {
+    var newValue = prevOperand + newNumber;
+
+    if (prevOperand === '') {
+      if (newNumber === '.') {
+        return '0.';
+      }
+    } else if (prevOperand === '0') {
+      if (newNumber === '0') {
+        return prevOperand;
+      } else if (newNumber === '.') {
+        return newValue;
+      } else {
+        return newNumber;
+      }
+    } else if (MAX_LENGTH < newValue.length) {
+      return prevOperand;
+    } else if (newNumber === '.' && prevOperand.includes('.')) {
+      return prevOperand;
+    }
+
+    return newValue;
   };
 
   window.app = window.app || {};
