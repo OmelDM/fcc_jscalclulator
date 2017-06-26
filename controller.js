@@ -56,7 +56,8 @@
   };
 
   Controller.prototype.deleteLastNumber = function () {
-    alert('deleteLastNumber');
+    this.operand = this.operand.slice(0, -1);
+    this.updateDisplay(this.operand);
   };
 
   Controller.prototype.updateDisplay = function(newNumber) {
